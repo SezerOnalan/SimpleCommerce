@@ -14,8 +14,7 @@
                 </div>
             </div>
         }
-        <div style="background-image:url('/homepages/shop-v3/images/2.jpg');" class="owl-bg-img">
-        </div>
+       
     </div>
 </section>
 <!-- END: SLIDER -->
@@ -95,7 +94,7 @@
                             <a href="@Url.Action("Index","Products",new { categoryId = item.Id })" >
                                 <img alt="" src="~/Uploads/@item.Photo">
                                 <div class="shop-category-box-title text-center">
-                                    <h6>@item.Name</h6><small>@item.Products.Count ürün</small>
+                                    <h6>@item.Name</h6><small>@item.PublishedProducts.Count ürün</small>
                                 </div>
                             </a>
                         </div>
