@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
+using ReflectionIT.Mvc.Paging;
 using SimpleCommerce.Data;
 using System;
 using System.Collections.Generic;
@@ -14,7 +16,7 @@ namespace SimpleCommerce.Controllers
         {
 
         }
-        public IActionResult Index(int categoryId=0,string order="date-asc")
+        public async Task<IActionResult> Index(int categoryId,string order="date-asc",int page=1,string sortExpression="CreateDate")
         {
             ViewBag.ProductsCategories = _context.Categories.Include(c => c.Products).ToList();
             ViewBag.SelectedCategory = _context.Categories.Where(c => c.Id == categoryId).FirstOrDefault();
@@ -35,8 +37,10 @@ namespace SimpleCommerce.Controllers
                     products = products.OrderByDescending(o => o.Price);
                     break; 
             }
+            var model = await PagingList.CreateAsync(products, 9, page, sortExpression, "CreateDate");
+            model.RouteValue = new RouteValueDictionary { { "categoryId", categoryId }, { "order", order } };
             
-            return View(products.ToList());
+            return View(model);
         }
     }
 }

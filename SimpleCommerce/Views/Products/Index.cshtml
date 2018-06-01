@@ -1,5 +1,5 @@
-﻿<!-- PAGE TITLE -->
-@model IEnumerable<Product>
+﻿@model PagingList<Product>
+<!-- PAGE TITLE -->
 <section id="page-title" class="page-title-parallax page-title-center text-dark" style="background-image:url(/images/parallax/page-title-parallax.jpg);">
     <div class="container">
         <div class="page-title col-md-8">
@@ -134,36 +134,7 @@
                         }
                     </div>
                     <nav class="text-center">
-                        <div class="pagination-wrap">
-                            <ul class="pagination">
-                                <li>
-                                    <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">1</a>
-                                </li>
-                                <li>
-                                    <a href="#">2</a>
-                                </li>
-                                <li class="active">
-                                    <a href="#">3</a>
-                                </li>
-                                <li>
-                                    <a href="#">4</a>
-                                </li>
-                                <li>
-                                    <a href="#">5</a>
-                                </li>
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                   <vc:pager paging-list="@Model"/>
                     </nav>
                 </div>
                 <!--END: Product list-->
@@ -193,7 +164,7 @@
 
                             <div class="product-image">
                                 <a href="@Url.Action("Details","Products",new { id=item.Id})">
-                                    <img src="~/Uploads/@item.Photo" alt="Shop product image!">
+                                    <img src="~/Uploads/@item.Photo" height="100">
                                 </a>
                             </div>
                             <div class="product-description">

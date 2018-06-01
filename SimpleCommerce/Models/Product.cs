@@ -30,8 +30,9 @@ namespace SimpleCommerce.Models
         public int CategoryId { get; set; }
         [Display(Name = "Oluşturma Tarihi")]
         public DateTime? CreateDate { get; set; }
+        [Display(Name="Yayında")]
         public bool IsPublished { get; set; }
-        [Display(Name="Öne Çıkan")]
+        [Display(Name="Öne Çıkanlar")]
         public bool IsFeatured { get; set; }
         [ForeignKey("CategoryId")]
         [Display(Name = "Kategori")]
