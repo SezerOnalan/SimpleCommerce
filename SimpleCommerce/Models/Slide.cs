@@ -20,6 +20,7 @@ namespace SimpleCommerce.Models
         public string Url { get; set; }
         [Display(Name="Pozisyon")]
         public int Position { get; set; }
+        [Display(Name="Yayında")]
         public bool IsPublished { get; set; }
     }
 }
