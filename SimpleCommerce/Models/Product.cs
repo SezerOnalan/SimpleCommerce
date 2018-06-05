@@ -37,6 +37,7 @@ namespace SimpleCommerce.Models
         [ForeignKey("CategoryId")]
         [Display(Name = "Kategori")]
         public Category Category { get; set; }
+        public virtual ICollection<CartItem> CartItems { get; set; }
         
     
 }
