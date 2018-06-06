@@ -12,9 +12,10 @@ using System;
 namespace SimpleCommerce.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180606085123_AddStringLengths")]
+    partial class AddStringLengths
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -331,12 +332,12 @@ namespace SimpleCommerce.Data.Migrations
 
                     b.Property<int?>("CustomerId");
 
-                    b.Property<int>("OrderStatus");
+                    b.Property<int>("OrderStatus")
+                        .HasMaxLength(4000);
 
                     b.Property<string>("Owner");
 
-                    b.Property<string>("ShippingNotes")
-                        .HasMaxLength(4000);
+                    b.Property<string>("ShippingNotes");
 
                     b.HasKey("Id");
 

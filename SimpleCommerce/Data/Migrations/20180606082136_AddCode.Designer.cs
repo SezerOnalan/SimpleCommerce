@@ -12,9 +12,10 @@ using System;
 namespace SimpleCommerce.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180606082136_AddCode")]
+    partial class AddCode
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,86 +235,59 @@ namespace SimpleCommerce.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("BillingAdresss")
-                        .HasMaxLength(200);
+                    b.Property<string>("BillingAdresss");
 
-                    b.Property<string>("BillingCity")
-                        .HasMaxLength(200);
+                    b.Property<string>("BillingCity");
 
-                    b.Property<string>("BillingCompanyName")
-                        .HasMaxLength(200);
+                    b.Property<string>("BillingCompanyName");
 
-                    b.Property<string>("BillingCountry")
-                        .HasMaxLength(200);
+                    b.Property<string>("BillingCountry");
 
-                    b.Property<string>("BillingCounty")
-                        .HasMaxLength(200);
+                    b.Property<string>("BillingCounty");
 
-                    b.Property<string>("BillingDistrict")
-                        .HasMaxLength(200);
+                    b.Property<string>("BillingDistrict");
 
-                    b.Property<string>("BillingEmail")
-                        .HasMaxLength(200);
+                    b.Property<string>("BillingEmail");
 
-                    b.Property<string>("BillingFirstName")
-                        .HasMaxLength(200);
+                    b.Property<string>("BillingFirstName");
 
-                    b.Property<string>("BillingIdentityNumber")
-                        .HasMaxLength(200);
+                    b.Property<string>("BillingIdentityNumber");
 
-                    b.Property<string>("BillingLastName")
-                        .HasMaxLength(200);
+                    b.Property<string>("BillingLastName");
 
-                    b.Property<string>("BillingPhone")
-                        .HasMaxLength(200);
+                    b.Property<string>("BillingPhone");
 
-                    b.Property<string>("BillingStreet")
-                        .HasMaxLength(200);
+                    b.Property<string>("BillingStreet");
 
-                    b.Property<string>("BillingZipCode")
-                        .HasMaxLength(200);
+                    b.Property<string>("BillingZipCode");
 
-                    b.Property<string>("ShippingAdresss")
-                        .HasMaxLength(200);
+                    b.Property<string>("ShippingAdresss");
 
-                    b.Property<string>("ShippingCity")
-                        .HasMaxLength(200);
+                    b.Property<string>("ShippingCity");
 
-                    b.Property<string>("ShippingCompanyName")
-                        .HasMaxLength(200);
+                    b.Property<string>("ShippingCompanyName");
 
-                    b.Property<string>("ShippingCountry")
-                        .HasMaxLength(200);
+                    b.Property<string>("ShippingCountry");
 
-                    b.Property<string>("ShippingCounty")
-                        .HasMaxLength(200);
+                    b.Property<string>("ShippingCounty");
 
-                    b.Property<string>("ShippingDistrict")
-                        .HasMaxLength(200);
+                    b.Property<string>("ShippingDistrict");
 
-                    b.Property<string>("ShippingEmail")
-                        .HasMaxLength(200);
+                    b.Property<string>("ShippingEmail");
 
-                    b.Property<string>("ShippingFirstName")
-                        .HasMaxLength(200);
+                    b.Property<string>("ShippingFirstName");
 
-                    b.Property<string>("ShippingIdentityNumber")
-                        .HasMaxLength(200);
+                    b.Property<string>("ShippingIdentityNumber");
 
-                    b.Property<string>("ShippingLastName")
-                        .HasMaxLength(200);
+                    b.Property<string>("ShippingLastName");
 
-                    b.Property<string>("ShippingPhone")
-                        .HasMaxLength(200);
+                    b.Property<string>("ShippingPhone");
 
-                    b.Property<string>("ShippingStreet")
-                        .HasMaxLength(200);
+                    b.Property<string>("ShippingStreet");
 
-                    b.Property<string>("ShippingZipCode")
-                        .HasMaxLength(200);
+                    b.Property<string>("ShippingZipCode");
 
-                    b.Property<string>("UserName")
-                        .HasMaxLength(200);
+                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 
@@ -329,14 +303,11 @@ namespace SimpleCommerce.Data.Migrations
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<int?>("CustomerId");
+                    b.Property<int>("CustomerId");
 
                     b.Property<int>("OrderStatus");
 
                     b.Property<string>("Owner");
-
-                    b.Property<string>("ShippingNotes")
-                        .HasMaxLength(4000);
 
                     b.HasKey("Id");
 
@@ -385,11 +356,9 @@ namespace SimpleCommerce.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Code")
-                        .HasMaxLength(200);
+                    b.Property<string>("Code");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(200);
+                    b.Property<string>("Name");
 
                     b.Property<int?>("ParentRegionId");
 
@@ -493,7 +462,8 @@ namespace SimpleCommerce.Data.Migrations
 
                     b.HasOne("SimpleCommerce.Models.Customer", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SimpleCommerce.Models.Product", b =>

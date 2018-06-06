@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
     <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="//cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" rel="stylesheet" />
    
 </head>
 <body>
@@ -36,6 +37,9 @@
                     <li><a asp-controller="Products" asp-action="Index">Ürünler</a></li>
                     <li><a asp-controller="Categories" asp-action="Index">Kategoriler</a></li>
                     <li><a asp-controller="Slides" asp-action="Index">Slidelar</a></li>
+                    <li><a asp-controller="Customers" asp-action="Index">Müşteriler</a></li>
+                    <li><a asp-controller="Regions" asp-action="Index">Bölgeler</a></li>
+                    <li><a asp-controller="Orders" asp-action="Index">Siparişler</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
@@ -70,9 +74,11 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
     <script>
     $(document).ready(function () {
         $('#tblRecords').DataTable({
+            responsive: true,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Turkish.json"
             }
