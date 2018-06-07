@@ -49,7 +49,7 @@ namespace SimpleCommerce.Models
         public string BillingStreet { get; set; }
         [Display(Name = "Fatura Adres")]
         [StringLength(200)]
-        public string BillingAdresss { get; set; }
+        public string BillingAddress { get; set; }
         [Display(Name = "Fatura Posta Kodu")]
         [StringLength(200)]
         public string BillingZipCode { get; set; }
@@ -89,7 +89,7 @@ namespace SimpleCommerce.Models
         public string ShippingStreet { get; set; }
         [Display(Name = "Teslimat Adres")]
         [StringLength(200)]
-        public string ShippingAdresss { get; set; }
+        public string ShippingAddress { get; set; }
         [Display(Name = "Teslimat Posta Kodu")]
         [StringLength(200)]
         public string ShippingZipCode { get; set; }

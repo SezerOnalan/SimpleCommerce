@@ -60,7 +60,7 @@ namespace SimpleCommerce.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,ParentRegionId,RegionTeype")] Region region)
+        public async Task<IActionResult> Create([Bind("Id,Code,Name,ParentRegionId,RegionTeype")] Region region)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace SimpleCommerce.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ParentRegionId,RegionTeype")] Region region)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,Name,ParentRegionId,RegionTeype")] Region region)
         {
             if (id != region.Id)
             {
