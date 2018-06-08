@@ -32,10 +32,17 @@
 <form method="post" class="sep-top-md">
     <input asp-for="CartId" type="hidden" />
     <input asp-for="CustomerId" type="hidden" />
+    <input asp-for="Id" type="hidden" />
     <section id="shop-checkout">
         <div class="container">
             <div class="shop-cart">
+                @if (!string.IsNullOrEmpty(ViewBag.ErrorCode))
+                {
+                    <div class="alert alert-danger">
+                        Bir Hata oluştu,lütfen daha sonra tekrar deneyiniz.
+                    </div>
 
+                }
                 <div class="row">
                     <div class="col-md-6 no-padding">
                         <div class="col-md-12">
@@ -166,9 +173,6 @@
                                                 <label class="sr-only">Telefon</label>
                                                 <input asp-for="Customer.ShippingPhone" type="text" class="form-control input-lg" placeholder="Telefon">
                                             </div>
-
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -179,13 +183,9 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="seperator">
                     <i class="fa fa-credit-card"></i>
                 </div>
-
-
                 <div class="row">
                     <div class="col-md-6">
                         <h4 class="upper">Siparişiniz</h4>
@@ -196,8 +196,6 @@
 
                                         <th class="cart-product-thumbnail">Ürün</th>
                                         <th class="cart-product-name">Açıklama</th>
-
-
                                         <th class="cart-product-subtotal">Toplam</th>
                                     </tr>
                                 </thead>
@@ -292,7 +290,7 @@
                                     <td>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="paymentMethod" value="" onclick="$('#bankTransfer').show('fast');"><b class="dark">Havale/EFT</b>
+                                                <input type="radio" name="paymentMethod" value="BankTransfer" onclick="$('#bankTransfer').show('fast');"><b class="dark">Havale/EFT</b>
                                                 <br>
                                             </label>
                                         </div>
@@ -302,7 +300,7 @@
                                     <td>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="paymentMethod" value="" onclick="$('#bankTransfer').hide('fast');"><b class="dark">Kredi Kartı</b>
+                                                <input type="radio" name="paymentMethod" value="CC" onclick="$('#bankTransfer').hide('fast');"><b class="dark">Kredi Kartı</b>
                                             </label>
                                         </div>
                                     </td>

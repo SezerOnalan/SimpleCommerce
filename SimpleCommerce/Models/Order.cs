@@ -34,5 +34,9 @@ namespace SimpleCommerce.Models
         [Display(Name = "Sipariş Notları")]
         [StringLength(4000)]
         public string ShippingNotes { get; set; }
+
+        [StringLength(200)]
+        [Display(Name ="Ödeme Yöntemi")]
+        public string PaymentMethod { get; set; }
     }
 }

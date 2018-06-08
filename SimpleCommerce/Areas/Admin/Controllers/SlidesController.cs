@@ -112,7 +112,7 @@ namespace SimpleCommerce.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Photo,Url,Position,IsPublished")] Slide slide)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Photo,Url,Position,IsPublished")] Slide slide,IFormFile File)
         {
             if (id != slide.Id)
             {
@@ -121,6 +121,23 @@ namespace SimpleCommerce.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
+                if (File != null && File.Length > 0)
+                {
+                    //upload işlemi yapmak için konum belirle
+                    string path = Path.Combine(_environment.WebRootPath, "Uploads", File.FileName);
+                    //uploads dizini yoksa oluştur
+                    if (!Directory.Exists(Path.Combine(_environment.WebRootPath, "Uploads")))
+                    {
+                        Directory.CreateDirectory(Path.Combine(_environment.WebRootPath, "Uploads"));
+                    }
+                    //belirlenen konuma upload yapılır.
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await File.CopyToAsync(stream);
+                    }
+                    //dosya adı entity'e atanır.
+                    slide.Photo = File.FileName;
+                }
                 try
                 {
                     _context.Update(slide);
